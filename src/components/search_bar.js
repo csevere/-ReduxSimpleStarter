@@ -9,16 +9,19 @@ class SearchBar extends Component {
     }
     render() {
         return( 
-            <div>
+            <div className = "search-bar">
                 <input 
                     value = {this.state.term}
-                    onChange = {event => this.setState({
-                        term: event.target.value
-                })} />
-             
+                    onChange = {event => this.onInputChange(event.target.value)}/>
             </div>
         );
-    }   
+    }
+    
+    onInputChange(term){
+        this.setState({term});
+        this.props.onSearchTermChange(term);
+
+    }
 }
 
 export default SearchBar; 
@@ -28,3 +31,6 @@ export default SearchBar;
 //this.state.term to reference it
 //controlled field/form element; value is set by the state
 //the state should tell the input what it's current value should be
+
+//this.setState({term: event.target.value})
+//onInputChange(term) >> this function sets the state and gets the search callback from app

@@ -1,6 +1,10 @@
 import React from 'react';
 
 const VideoDetail = ({video})=>{
+    if(!video){
+        return <div>Loading...</div>
+
+    }
     const videoId = video.id.videoId; 
     const url = `https:///www.youtube.com/embed/${videoId}`; 
 
@@ -21,3 +25,5 @@ const VideoDetail = ({video})=>{
 };
 
 export default VideoDetail; 
+
+//react wants to get info right away; parent objects can't fetch data fast enough for child; to handle this do this>> add a check or if statement to compensate
